@@ -44,6 +44,16 @@ const templates = {
                 .replace('{{date}}', data.date),
         };
     },
+
+    resetPassword: (data) => {
+        const html = getHtmlTemplate('reset-password');
+        return {
+            subject: 'Şifre Sıfırlama Talimatları',
+            message: html
+                .replace('{{username}}', data.username)
+                .replace('{{reset_link}}', data.reset_link),
+        };
+    },
 };
 
 module.exports = templates;
