@@ -39,9 +39,15 @@
             color: #fff;
             margin-bottom: 10px;
         }
-        .content p {
-            line-height: 1.8;
+        /* Yeni mesaj kutusu stili */
+        .message-box {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            margin: 15px auto;
             font-size: 16px;
+            line-height: 1.6;
             color: #d3d3d3;
         }
         .button {
@@ -84,8 +90,9 @@
 
         <div class="content">
             <h1>Merhaba {{username}},</h1>
-            <p>{{message}}</p>
-            <a href="https://horiar.com" class="button">Horiar Araçlarını Kullanmaya Başla</a>
+            <div class="message-box">
+                {{message}}
+            </div>
         </div>
 
         <div class="footer">
