@@ -39,9 +39,8 @@
             color: #fff;
             margin-bottom: 10px;
         }
-        /* Yeni mesaj kutusu stili */
+        /* Mesaj kutusu stili */
         .message-box {
-            background-color: #222;
             padding: 15px;
             border-radius: 8px;
             text-align: left;
@@ -49,7 +48,16 @@
             font-size: 16px;
             line-height: 1.6;
             color: #d3d3d3;
+            background: linear-gradient(180deg, #2e2e2e, #1e1e1e); /* Desteklenmeyen tarayıcılar için fallback */
         }
+        
+        /* Tarayıcının sistem renklerini desteklemesi halinde sistem renkleriyle gradient */
+        @supports (color: ButtonFace) {
+            .message-box {
+                background: linear-gradient(180deg, GradientActiveCaption, GradientInactiveCaption);
+            }
+        }
+        
         .button {
             display: inline-block;
             margin: 20px 0;
