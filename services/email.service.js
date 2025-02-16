@@ -3,6 +3,7 @@ const templates = require('../templates/email.templates');
 
 class EmailService {
     static async sendEmail(email, type, data) {
+        console.log("Gelen tip:", type);
         try {
             // Veri doğrulama
             if (!email || !type || !data) {

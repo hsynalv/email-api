@@ -84,6 +84,7 @@
                     <option value="announcement">Duyuru</option>
                     <option value="purchase">Satın Alma</option>
                     <option value="resetPassword">Şifre Sıfırlama</option>
+                    <option value="support">Destek Talebi</option>
                 </select>
             </div>
             <div class="form-group" id="dynamicFields"></div>
@@ -114,6 +115,10 @@
             resetPassword: [
                 { name: 'username', label: 'Kullanıcı Adı', type: 'text' },
                 { name: 'reset_link', label: 'Şifre Sıfırlama Linki', type: 'url' }
+            ],
+            support: [
+                { name: 'name', label: 'İsim', type: 'text' },
+                { name: 'message', label: 'Mesaj', type: 'textarea' }
             ]
         };
 
@@ -158,6 +163,10 @@
                 formData.data[field.name] = document.getElementById(field.name).value;
             });
 
+            if (formData.type === 'support') {
+                formData.data.email = document.getElementById('email').value;
+            }
+
             try {
                 const response = await fetch('/send-email', {
                     method: 'POST',
@@ -176,7 +185,6 @@
             }
         });
 
-       
         updateDynamicFields();
     </script>
 </div>

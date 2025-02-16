@@ -21,6 +21,11 @@ app.use('/send-email', limiter);
 app.post('/send-email', async (req, res) => {
     const { email, type, data } = req.body;
 
+    // Destek talebinde data.email eksikse, ana email bilgisini ekle
+    if (type === 'support' && !data.email) {
+        data.email = email;
+    }
+
     try {
         await EmailService.sendEmail(email, type, data);
         res.status(200).json({ 

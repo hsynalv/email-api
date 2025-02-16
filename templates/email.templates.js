@@ -18,7 +18,7 @@ const templates = {
         return {
             subject: 'Hoş Geldiniz!',
             message: html.replace('{{username}}', data.name)
-            .replace('{{username}}', data.name),
+                         .replace('{{username}}', data.name),
         };
     },
 
@@ -52,6 +52,18 @@ const templates = {
             message: html
                 .replace('{{username}}', data.username)
                 .replace('{{reset_link}}', data.reset_link),
+        };
+    },
+
+    // Yeni destek talebi şablon fonksiyonu
+    support: (data) => {
+        const html = getHtmlTemplate('support');
+        return {
+            subject: 'Destek Talebi',
+            message: html
+                .replace('{{name}}', data.name)
+                .replace('{{email}}', data.email)
+                .replace('{{message}}', data.message),
         };
     },
 };
